@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization:
 
 namespace AuthProject.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -28,7 +29,8 @@ namespace AuthProject.Controllers
 
         public async Task<IActionResult> LogOut()
         {
-            return View();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login","Access");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

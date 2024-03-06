@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,6 +14,7 @@ namespace AuthProject.Controllers
 
             if (claimUser.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
+
             return View();
         }
 
